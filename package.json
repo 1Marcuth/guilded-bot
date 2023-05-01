@@ -1,0 +1,27 @@
+{
+  "name": "dcm-guilded-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts --trace-warnings",
+    "dev:reload": "nodemon src/index.ts --trace-warnings",
+    "start": "node ./dist/index.js --trace-warnings"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.15",
+    "@types/morgan": "^1.9.4",
+    "nodemon": "^2.0.20",
+    "ts-node": "^10.9.1"
+  },
+  "dependencies": {
+    "bot-command-options-parser": "^1.0.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "guilded.js": "^0.15.2",
+    "morgan": "^1.10.0"
+  }
+}
