@@ -1,13 +1,12 @@
 import * as guilded from "guilded.js"
 
 import CommandOptionsStorage from "../../utils/command/options/storage"
-
-import IOption from "bot-command-options-parser/dist/interfaces/option"
+import { CommandOption } from "command-options-handler"
 
 interface ICommand {
     name: string
     description: string
-    options?: IOption[]
+    options?: CommandOption[]
     run: (context: guilded.Message, options?: CommandOptionsStorage) => Promise<any>
 }
 

@@ -26,8 +26,4 @@ const bot = {
     }
 }
 
-const colors = {
-    DarkRed: "#8b0000"
-}
-
-export { bot, colors }
+export { bot }

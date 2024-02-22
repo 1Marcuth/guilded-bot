@@ -1,10 +1,9 @@
-import CommandOptionsParser from "bot-command-options-parser/dist"
+import CommandHandler, { HandlingResult } from "command-options-handler"
 import * as guilded from "guilded.js"
 
 import { formatHtmlToMarkdown } from "../message/content"
 import CommandOptionsStorage from "./options/storage"
 
-import IValidateResult from "bot-command-options-parser/dist/interfaces/validate-result"
 import ICommand from "../../interfaces/command"
 
 class CommandWrapper {
@@ -18,15 +17,15 @@ class CommandWrapper {
         const options = this.command.options
 
         if (options) {
-            const optionsParser = new CommandOptionsParser(options)
-            let optionsValidateResult: IValidateResult[]
+            const commandHandler = new CommandHandler(this.command)
+            let optionsValidateResult: HandlingResult
             
             if (rawOptions.length > 0) {
-                optionsValidateResult = optionsParser.validateOptions(rawOptions)
+                optionsValidateResult = commandHandler.handleStringOptions(rawOptions)
 
                 let optionsError: any[] = []
                 
-                optionsValidateResult.forEach((option, i) => {
+                optionsValidateResult.optionsValidation.forEach((option, i) => {
                     if (!option.isValid.value) optionsError.push({ i, ...option })
                 })
 
@@ -39,7 +38,7 @@ class CommandWrapper {
                     return await context.reply({ content: formatHtmlToMarkdown(optionsErrorMessage) })
                 }
 
-                const optionsStorage = new CommandOptionsStorage(optionsValidateResult)
+                const optionsStorage = new CommandOptionsStorage(optionsValidateResult.optionsValidation)
 
                 return await this.command.run(context, optionsStorage)
             } else {

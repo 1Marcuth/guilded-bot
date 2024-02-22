@@ -19,7 +19,7 @@ function createClient() {
     function start() {
         console.log("> [client] Starting client...")
 
-        return new Promise(async (resolve, reject) => {
+        return new Promise(async (resolve) => {
             await useEventsHandler(client)
             await useCommandsHandler()
 

@@ -18,10 +18,9 @@
     "ts-node": "^10.9.1"
   },
   "dependencies": {
-    "bot-command-options-parser": "^1.0.5",
+    "command-options-handler": "^0.1.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "guilded.js": "^0.15.2",
-    "morgan": "^1.10.0"
+    "guilded.js": "^0.15.2"
   }
 }

@@ -1,9 +1,9 @@
-import IValidateResult from "bot-command-options-parser/dist/interfaces/validate-result"
+import { OptionValidationResult } from "command-options-handler"
 
 class CommandOptionsStorage {
-    private options: IValidateResult[]
+    private options: OptionValidationResult[]
 
-    constructor(options: IValidateResult[]) {
+    constructor(options: OptionValidationResult[]) {
         this.options = options
     }
 
@@ -14,7 +14,7 @@ class CommandOptionsStorage {
     public getRawValue(optionName: string) {
         for (const option of this.options)  {
             if (option.name === optionName) {
-                return option.values.raw
+                return option.value.raw
             }
         }
     }
@@ -22,7 +22,7 @@ class CommandOptionsStorage {
     public getParsedValue(optionName: string) {
         for (const option of this.options)  {
             if (option.name === optionName) {
-                return option.values.parsed
+                return option.value.parsed
             }
         }
     }
@@ -30,7 +30,7 @@ class CommandOptionsStorage {
     public getType(optionName: string) {
         for (const option of this.options)  {
             if (option.name === optionName) {
-                return option.type
+                return ""
             }
         }
     }
