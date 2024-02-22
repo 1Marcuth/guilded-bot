@@ -6,13 +6,6 @@ import Colors from "../../utils/command/color"
 export const command: ICommand = {
     name: "ping",
     description: "Envia o ping do bot.",
-    options: [
-        {
-            name: "teste",
-            description: "Teste de opção",
-            type: "integer"
-        }
-    ],
     run: async (context) => {
         const client = context.client
         const ping = client.ws.ping
